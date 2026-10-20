@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>НМТ Pro — підготовка до НМТ</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6fb;--card:#fff;--tx:#1b2140;--mu:#667;--pr:#4f46e5;--pr2:#7c3aed;--ok:#16a34a;--bad:#dc2626;--bd:#e3e6f0}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1224;--card:#1a1e38;--tx:#eef0ff;--mu:#9aa0c4;--bd:#2b3055;--pr:#818cf8;--pr2:#a78bfa}}
+:root[data-theme=dark]{--bg:#0f1224;--card:#1a1e38;--tx:#eef0ff;--mu:#9aa0c4;--bd:#2b3055;--pr:#818cf8;--pr2:#a78bfa}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--bd);z-index:5}
+.nav{max-width:1000px;margin:auto;display:flex;align-items:center;gap:8px;padding:10px 16px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:20px;background:linear-gradient(90deg,var(--pr),var(--pr2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-right:auto;cursor:pointer}
+.nav a,.nav button.l{background:none;border:0;color:var(--tx);font:inherit;padding:8px 12px;border-radius:10px;cursor:pointer}
+.nav a:hover,.nav a.on{background:var(--bg);color:var(--pr)}
+main{max-width:1000px;margin:auto;padding:20px 16px 60px}
+h1{font-size:clamp(24px,5vw,34px);margin:.2em 0}h2{margin:1.2em 0 .5em}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:20px;box-shadow:0 2px 10px rgba(30,30,80,.05)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.sub{cursor:pointer;transition:.2s;text-align:left;color:inherit;font:inherit}
+.sub:hover{transform:translateY(-3px);border-color:var(--pr)}
+.sub .e{font-size:34px}
+.btn{background:linear-gradient(90deg,var(--pr),var(--pr2));color:#fff;border:0;border-radius:12px;padding:12px 20px;font:600 16px inherit;cursor:pointer}
+.btn.s{background:var(--bg);color:var(--tx);border:1px solid var(--bd)}
+.btn:disabled{opacity:.4}
+.hero{background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;border-radius:22px;padding:28px 22px;margin-bottom:16px}
+.hero p{opacity:.9;margin:.3em 0 1em}.hero .btn{background:#fff;color:#4f46e5}
+.stat{text-align:center}.stat b{display:block;font-size:30px;color:var(--pr)}.stat span{color:var(--mu);font-size:14px}
+.bar{height:10px;background:var(--bg);border-radius:9px;overflow:hidden;margin:6px 0 12px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pr),var(--pr2));border-radius:9px}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit}
+input:focus{outline:2px solid var(--pr)}
+.auth{max-width:420px;margin:30px auto}
+.tabs{display:flex;gap:6px;margin:12px 0}.tabs button{flex:1}
+.err{color:var(--bad);min-height:22px;font-size:14px;margin-top:8px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:14px;border-radius:12px;border:2px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;cursor:pointer}
+.opt:hover{border-color:var(--pr)}.opt.ok{border-color:var(--ok);background:rgba(22,163,74,.12)}.opt.no{border-color:var(--bad);background:rgba(220,38,38,.12)}
+.mat{margin-bottom:12px}.mat summary{font-weight:700;cursor:pointer}.mat ul{padding-left:20px}
+.chart{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:10px}
+.chart div{flex:1;background:linear-gradient(var(--pr2),var(--pr));border-radius:8px 8px 0 0;min-height:4px;position:relative}
+.chart small{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:12px;color:var(--mu)}
+.row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--bd);font-size:15px}
+.mu{color:var(--mu)}
+@media(max-width:560px){.nav a{padding:8px 9px;font-size:14px}}
+</style>
+</head>
+<body>
+<header><div class="nav" id="nav"></div></header>
+<main id="app"></main>
+<script>
+const S={
+ukr:{n:'Українська мова',e:'📖',m:[
+['Орфографія: правопис ненаголошених голосних','<ul><li>Е–И: перевіряй наголосом (<i>береза — берези́</i>).</li><li>Префікси <b>пре-</b> (дуже: <i>прекрасний</i>) та <b>при-</b> (наближення: <i>прийти</i>).</li><li>Апостроф ставимо після б, п, в, м, ф, р перед я, ю, є, ї: <i>п’ять, м’ята</i>.</li></ul>'],
+['Частини мови','<ul><li>Самостійні: іменник, прикметник, числівник, займенник, дієслово, прислівник.</li><li>Службові: прийменник, сполучник, частка.</li><li>Прислівник відповідає на питання <i>як? де? коли?</i> і не змінюється.</li></ul>'],
+['Розділові знаки','<ul><li>Кома між частинами складного речення.</li><li>Тире між підметом і присудком, вираженими іменниками.</li><li>Двокрапка після узагальнювального слова перед перелічуванням.</li></ul>']],
+q:[['Яке слово написане правильно?',['приємний','приятний','прийемний','прийятний'],0],['Скільки голосних звуків у слові «яблуня»?',['2','3','4','5'],1],['Якою частиною мови є слово «швидко»?',['прикметник','прислівник','іменник','дієслово'],1],['Який розділовий знак потрібен: «Коли настане весна… ми підемо в ліс»?',['кома','двокрапка','тире','крапка з комою'],0],['Синоніми — це слова зі…',['протилежним значенням','схожим значенням','кількома значеннями','іншомовним походженням'],1]]},
+math:{n:'Математика',e:'📐',m:[
+['Рівняння та нерівності','<ul><li>Лінійне: <b>ax + b = c</b> → x = (c − b)/a.</li><li>Квадратне: D = b² − 4ac; x = (−b ± √D)/2a.</li><li>Теорема Вієта: x₁ + x₂ = −b/a, x₁·x₂ = c/a.</li></ul>'],
+['Відсотки','<ul><li>p% від числа N = N · p / 100.</li><li>Збільшення на p%: N · (1 + p/100).</li></ul>'],
+['Геометрія та тригонометрія','<ul><li>Площа круга S = πR²; довжина кола C = 2πR.</li><li>sin30° = 0,5; cos60° = 0,5; sin45° = √2/2.</li><li>Піфагор: a² + b² = c².</li></ul>']],
+q:[['Розв’яжіть: 2x + 6 = 14',['3','4','5','8'],1],['Скільки це 20% від 150?',['20','25','30','35'],2],['Чому дорівнює sin 30°?',['0','0,5','√3/2','1'],1],['Сума коренів рівняння x² − 5x + 6 = 0',['5','6','−5','1'],0],['Площа круга радіуса 3',['6π','9π','3π','18π'],1]]},
+eng:{n:'Англійська мова',e:'🇬🇧',m:[
+['Present Simple та Past Simple','<ul><li>Present Simple: he/she/it + <b>-s</b> (<i>she goes</i>).</li><li>Past Simple: правильні + <b>-ed</b>, неправильні — 2-га форма (<i>write — wrote</i>).</li></ul>'],
+['Present Perfect','<ul><li>have/has + 3-тя форма: <i>I have seen</i>.</li><li><b>for</b> + період, <b>since</b> + момент початку.</li></ul>'],
+['Умовні речення','<ul><li>Type 1: If + Present, will + V (реальна умова).</li><li>Type 2: If + Past, would + V (малоймовірна).</li></ul>']],
+q:[['She ___ to school every day.',['go','goes','going','gone'],1],['Past Simple of “write”:',['writed','wrote','written','writes'],1],['I have lived here ___ 2010.',['for','since','during','from'],1],['Opposite of “ancient”:',['old','modern','huge','quiet'],1],['If it rains, we ___ at home.',['stay','will stay','stayed','would stay'],1]]},
+hist:{n:'Історія України',e:'🏛️',m:[
+['Київська Русь','<ul><li>882 — Олег об’єднав Київ і Новгород.</li><li>988 — хрещення Русі за князя Володимира.</li><li>1019–1054 — правління Ярослава Мудрого.</li></ul>'],
+['Козацька доба','<ul><li>1648 — початок Національно-визвольної війни під проводом Б. Хмельницького.</li><li>1654 — Переяславська рада.</li></ul>'],
+['XX століття','<ul><li>1917 — Українська Центральна Рада.</li><li>22 січня 1919 — Акт Злуки УНР і ЗУНР.</li><li>24 серпня 1991 — Акт проголошення незалежності.</li></ul>']],
+q:[['Рік хрещення Русі',['988','1054','862','1240'],0],['Хто очолив Національно-визвольну війну 1648 р.?',['Іван Мазепа','Петро Дорошенко','Богдан Хмельницький','Іван Сірко'],2],['Коли відбулася злука УНР і ЗУНР?',['1917','1918','1919','1921'],2],['Коли проголошено незалежність України?',['24 серпня 1991','1 грудня 1991','22 січня 1918','28 червня 1996'],0],['У якому році Олег об’єднав Київ і Новгород?',['882','988','1113','1187'],0]]}};
+
+const $=s=>document.querySelector(s),LS={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let user=LS.get('nmt_session',null),mode='in',T=null;
+const res=()=>LS.get('nmt_res_'+user.email,[]);
+
+function nav(v){
+ $('#nav').innerHTML='<span class="logo" onclick="go(\'home\')">🎓 НМТ Pro</span>'+(user?
+ `<a onclick="go('home')">Головна</a><a onclick="go('stats')">Статистика</a><button class="l" onclick="out()">Вийти</button>`:'');
+}
+function go(v,a){window.scrollTo(0,0);nav();if(!user&&v!=='auth')v='auth';({auth,home,subj,test,stats})[v](a)}
+function out(){user=null;LS.set('nmt_session',null);go('auth')}
+
+function auth(){
+ $('#app').innerHTML=`<div class="card auth"><h1>${mode=='in'?'Вхід':'Реєстрація'}</h1><p class="mu">Підготовка до НМТ: матеріали, тести та відстеження прогресу.</p>
+ <div class="tabs"><button class="btn ${mode=='in'?'':'s'}" onclick="mode='in';auth()">Вхід</button><button class="btn ${mode=='up'?'':'s'}" onclick="mode='up';auth()">Реєстрація</button></div>
+ ${mode=='up'?'<label>Ім’я</label><input id="nm" autocomplete="name">':''}
+ <label>Email</label><input id="em" type="email" autocomplete="email">
+ <label>Пароль (мін. 6 символів)</label><input id="pw" type="password" autocomplete="current-password">
+ <div class="err" id="er"></div><button class="btn" style="width:100%" onclick="sub()">${mode=='in'?'Увійти':'Створити акаунт'}</button></div>`;
+}
+function sub(){
+ const em=$('#em').value.trim().toLowerCase(),pw=$('#pw').value,u=LS.get('nmt_users',{}),er=t=>$('#er').textContent=t;
+ if(!/^\S+@\S+\.\S+$/.test(em))return er('Введіть коректний email');
+ if(pw.length<6)return er('Пароль має містити щонайменше 6 символів');
+ const h=btoa(unescape(encodeURIComponent(pw)));
+ if(mode=='up'){const nm=$('#nm').value.trim();if(!nm)return er('Введіть ім’я');if(u[em])return er('Такий email уже зареєстровано');
+  u[em]={name:nm,pw:h};LS.set('nmt_users',u)}
+ else if(!u[em]||u[em].pw!==h)return er('Невірний email або пароль');
+ user={email:em,name:u[em].name};LS.set('nmt_session',user);go('home');
+}
+
+function avg(r){return r.length?Math.round(r.reduce((a,x)=>a+x.p,0)/r.length):0}
+function home(){
+ const r=res();
+ $('#app').innerHTML=`<div class="hero"><h1>Привіт, ${esc(user.name)}! 👋</h1><p>Обери предмет, вивчай матеріали й проходь тренувальні тести.</p><button class="btn" onclick="go('test','${Object.keys(S)[r.length%4]}')">Швидкий тест</button></div>
+ <div class="grid"><div class="card stat"><b>${r.length}</b><span>пройдено тестів</span></div><div class="card stat"><b>${avg(r)}%</b><span>середній результат</span></div><div class="card stat"><b>${r.length?Math.max(...r.map(x=>x.p)):0}%</b><span>найкращий результат</span></div></div>
+ <h2>Предмети</h2><div class="grid">${Object.entries(S).map(([k,s])=>{const a=avg(r.filter(x=>x.s==k));return`<button class="card sub" onclick="go('subj','${k}')"><div class="e">${s.e}</div><b>${s.n}</b><div class="bar"><i style="width:${a}%"></i></div><span class="mu">Прогрес: ${a}%</span></button>`}).join('')}</div>`;
+}
+function subj(k){
+ const s=S[k];
+ $('#app').innerHTML=`<button class="btn s" onclick="go('home')">← Назад</button><h1>${s.e} ${s.n}</h1>
+ <h2>Навчальні матеріали</h2>${s.m.map((m,i)=>`<details class="card mat" ${i?'':'open'}><summary>${m[0]}</summary>${m[1]}</details>`).join('')}
+ <button class="btn" onclick="go('test','${k}')">Почати тренувальний тест (${s.q.length} запитань)</button>`;
+}
+function test(k){T={k,i:0,sc:0,ans:false};q()}
+function q(){
+ const s=S[T.k],x=s.q[T.i];
+ $('#app').innerHTML=`<div class="card"><div class="mu">${s.n} · Запитання ${T.i+1} з ${s.q.length}</div><div class="bar"><i style="width:${T.i/s.q.length*100}%"></i></div>
+ <h2 style="margin-top:0">${esc(x[0])}</h2>${x[1].map((o,i)=>`<button class="opt" onclick="pick(${i},this)">${esc(o)}</button>`).join('')}
+ <button class="btn" id="nx" disabled onclick="next()">${T.i+1==s.q.length?'Завершити':'Далі'}</button></div>`;
+}
+function pick(i,b){
+ if(T.ans)return;T.ans=true;const x=S[T.k].q[T.i];
+ document.querySelectorAll('.opt').forEach((e,j)=>{if(j==x[2])e.classList.add('ok')});
+ if(i==x[2])T.sc++;else b.classList.add('no');
+ $('#nx').disabled=false;
+}
+function next(){
+ T.ans=false;T.i++;
+ if(T.i<S[T.k].q.length)return q();
+ const n=S[T.k].q.length,p=Math.round(T.sc/n*100),r=res();
+ r.push({s:T.k,sc:T.sc,n,p,d:new Date().toISOString()});LS.set('nmt_res_'+user.email,r);
+ $('#app').innerHTML=`<div class="card stat"><h1>${p>=80?'🎉 Чудово!':p>=50?'👍 Непогано!':'💪 Продовжуй вчитись!'}</h1><b style="font-size:56px">${p}%</b><p>Правильних відповідей: ${T.sc} з ${n}</p>
+ <button class="btn" onclick="go('test','${T.k}')">Ще раз</button> <button class="btn s" onclick="go('stats')">Статистика</button></div>`;
+}
+function stats(){
+ const r=res(),l=r.slice(-8);
+ $('#app').innerHTML=`<h1>📊 Статистика</h1>
+ <div class="grid"><div class="card stat"><b>${r.length}</b><span>тестів</span></div><div class="card stat"><b>${avg(r)}%</b><span>середній результат</span></div><div class="card stat"><b>${r.reduce((a,x)=>a+x.sc,0)}</b><span>правильних відповідей</span></div></div>
+ <h2>Прогрес за предметами</h2><div class="card">${Object.entries(S).map(([k,s])=>{const f=r.filter(x=>x.s==k),a=avg(f);return`<div class="row" style="border:0;padding:0"><span>${s.e} ${s.n}</span><span class="mu">${a}% · ${f.length} тест.</span></div><div class="bar"><i style="width:${a}%"></i></div>`}).join('')}</div>
+ <h2>Динаміка (останні тести)</h2><div class="card">${l.length?`<div class="chart">${l.map(x=>`<div style="height:${Math.max(x.p,3)}%"><small>${x.p}%</small></div>`).join('')}</div>`:'<p class="mu">Пройдіть перший тест, щоб побачити графік.</p>'}</div>
+ <h2>Історія</h2><div class="card">${r.length?r.slice().reverse().slice(0,15).map(x=>`<div class="row"><span>${S[x.s].e} ${S[x.s].n}</span><span>${x.sc}/${x.n} · <b>${x.p}%</b> <span class="mu">${new Date(x.d).toLocaleDateString('uk-UA')}</span></span></div>`).join(''):'<p class="mu">Поки що порожньо.</p>'}</div>`;
+}
+go(user?'home':'auth');
+</script>
+</body>
+</html>
